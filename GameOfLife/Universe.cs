@@ -9,6 +9,8 @@ class Universe {
     readonly int _height;
     readonly int _width;
 
+    readonly Dictionary<Cell, Cell[]> _neighbors = new();
+
     public Cell[] Cells { get; }
     public Rules Rules { get; }
 
@@ -19,6 +21,7 @@ class Universe {
         _width = width;
         Rules = rules;
         Cells = Coordinate.CreateCoordinateSet(_height, _width).Select(c => new Cell(c)).ToArray();
+        foreach (var cell in Cells) _neighbors[cell] = GetNeighbors(cell);
     }
 
     public void Tick() {
@@ -40,7 +43,11 @@ class Universe {
     }
 
     int GetNumNeighborsAlive(Cell cell) {
-        return Cells.Where(c => IsNeighbor(cell, c)).Count(c => c.Alive);
+        return _neighbors[cell].Count(c => c.Alive);
+    }
+    
+    Cell[] GetNeighbors(Cell cell) {
+        return Cells.Where(c => IsNeighbor(cell, c)).ToArray();
     }
 
     bool IsNeighbor(Cell cell, Cell other) {
@@ -60,3 +67,20 @@ class Universe {
         }
     }
 }
+    
+    // Cell[] GetNeighbors(Cell cell) {
+    //     var deltas = new[] { -1, 0, 1 };
+    //     var coordinates = deltas.SelectMany(x => deltas.Select(y => Wrap(new Coordinate(cell.Location.X + x, cell.Location.Y + y))));
+    //     return coordinates.Where(c => ).ToArray();
+    // }
+
+    // Coordinate Wrap(Coordinate c) {
+    //     if (!Rules.WrapEdges) return c;
+    //     var x = c.X;
+    //     var y = c.Y;
+    //     if (x < 0) x = _height - 1;
+    //     if (x >= _height) x = 0;
+    //     if (y < 0) y = _width - 1;
+    //     if (y >= _width) y = 0;
+    //     return new Coordinate(x, y);
+    // }
