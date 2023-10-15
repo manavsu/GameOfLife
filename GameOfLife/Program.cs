@@ -3,11 +3,11 @@
 
 using GameOfLife;
 
-var universe = new Universe(100, 100);
+var universe = new Universe(50, 100);
 var printer = new ConsolePrinter(universe);
 var timer = new IntervalTimer(TimeSpan.FromMilliseconds(100));
-universe.EmbedPattern(Pattern.Glider(new Coordinate(0, 0)));
-universe.EmbedPattern(Pattern.Glider(new Coordinate(5, 5)));
+
+universe.EmbedPattern(Pattern.GliderGun(new Coordinate(0, 0)));
 
 while (true) {
     printer.Print();

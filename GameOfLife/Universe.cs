@@ -55,8 +55,8 @@ class Universe {
         var xDiff = Math.Abs(cell.Location.X - other.Location.X);
         var yDiff = Math.Abs(cell.Location.Y - other.Location.Y);
         if (!Rules.WrapEdges) return xDiff <= 1 && yDiff <= 1;
-        if (xDiff == _height - 1) xDiff = 1;
-        if (yDiff == _width - 1) yDiff = 1;
+        if (xDiff == _width - 1) xDiff = 1;
+        if (yDiff == _height - 1) yDiff = 1;
         return xDiff <= 1 && yDiff <= 1;
     }
 
@@ -67,20 +67,3 @@ class Universe {
         }
     }
 }
-    
-    // Cell[] GetNeighbors(Cell cell) {
-    //     var deltas = new[] { -1, 0, 1 };
-    //     var coordinates = deltas.SelectMany(x => deltas.Select(y => Wrap(new Coordinate(cell.Location.X + x, cell.Location.Y + y))));
-    //     return coordinates.Where(c => ).ToArray();
-    // }
-
-    // Coordinate Wrap(Coordinate c) {
-    //     if (!Rules.WrapEdges) return c;
-    //     var x = c.X;
-    //     var y = c.Y;
-    //     if (x < 0) x = _height - 1;
-    //     if (x >= _height) x = 0;
-    //     if (y < 0) y = _width - 1;
-    //     if (y >= _width) y = 0;
-    //     return new Coordinate(x, y);
-    // }

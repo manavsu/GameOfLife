@@ -15,8 +15,8 @@ struct Coordinate : IEquatable<Coordinate> {
     public static Coordinate[] CreateCoordinateSet(int height, int width) {
         var coordinates = new Coordinate[height * width];
         var cnt = 0;
-        for (var i = 0; i < height; i++) {
-            for (var j = 0; j < width; j++) coordinates[cnt++] = new Coordinate(i, j);
+        for (var i = 0; i < width; i++) {
+            for (var j = 0; j < height; j++) coordinates[cnt++] = new Coordinate(i, j);
         }
         return coordinates;
     }
