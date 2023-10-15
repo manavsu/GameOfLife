@@ -10,18 +10,18 @@ class Universe {
     readonly int _width;
 
     public Cell[] Cells { get; }
-    public UniversalRules Rules { get; }
+    public Rules Rules { get; }
 
-    public Universe(int height, int width) : this(height, width, new UniversalRules()) { }
+    public Universe(int height, int width) : this(height, width, new Rules()) { }
 
-    public Universe(int height, int width, UniversalRules rules) {
+    public Universe(int height, int width, Rules rules) {
         _height = height;
         _width = width;
         Rules = rules;
         Cells = Coordinate.CreateCoordinateSet(_height, _width).Select(c => new Cell(c)).ToArray();
     }
 
-    public void Increment() {
+    public void Tick() {
         UpdateState();
         CalculateNextState();
     }
