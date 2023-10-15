@@ -6,8 +6,8 @@ using System.Diagnostics;
 namespace GameOfLife;
 
 class Universe {
-    readonly int _height;
-    readonly int _width;
+    public int Height { get; }
+    public int Width { get; }
 
     readonly Dictionary<Cell, Cell[]> _neighbors = new();
 
@@ -17,10 +17,10 @@ class Universe {
     public Universe(int height, int width) : this(height, width, new Rules()) { }
 
     public Universe(int height, int width, Rules rules) {
-        _height = height;
-        _width = width;
+        Height = height;
+        Width = width;
         Rules = rules;
-        Cells = Coordinate.CreateCoordinateSet(_height, _width).Select(c => new Cell(c)).ToArray();
+        Cells = Coordinate.CreateCoordinateSet(Height, Width).Select(c => new Cell(c)).ToArray();
         foreach (var cell in Cells) _neighbors[cell] = GetNeighbors(cell);
     }
 
@@ -55,8 +55,8 @@ class Universe {
         var xDiff = Math.Abs(cell.Location.X - other.Location.X);
         var yDiff = Math.Abs(cell.Location.Y - other.Location.Y);
         if (!Rules.WrapEdges) return xDiff <= 1 && yDiff <= 1;
-        if (xDiff == _width - 1) xDiff = 1;
-        if (yDiff == _height - 1) yDiff = 1;
+        if (xDiff == Width - 1) xDiff = 1;
+        if (yDiff == Height - 1) yDiff = 1;
         return xDiff <= 1 && yDiff <= 1;
     }
 

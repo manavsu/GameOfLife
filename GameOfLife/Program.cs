@@ -4,13 +4,13 @@
 using GameOfLife;
 
 var universe = new Universe(50, 100);
-var printer = new ConsolePrinter(universe);
+var printer = new OutputController(universe);
 var timer = new IntervalTimer(TimeSpan.FromMilliseconds(100));
 
 universe.EmbedPattern(Pattern.GliderGun(new Coordinate(0, 0)));
 
 while (true) {
-    printer.Print();
+    printer.PrintCells();
     universe.Tick();
     timer.Wait();
 }
