@@ -10,7 +10,7 @@ var timer = new IntervalTimer(TimeSpan.FromMilliseconds(100));
 universe.EmbedPattern(Pattern.GliderGun(new Coordinate(0, 0)));
 
 while (true) {
-    printer.PrintCells();
     universe.Tick();
+    printer.PrintCells();
     timer.Wait();
 }
