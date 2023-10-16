@@ -1,7 +1,7 @@
 # Game Of Life
 
 ## Description
-This is a simple implementation of Conway's Game of Life in Python. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves.
+This is a simple implementation of Conway's Game of Life in C#. It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves.
 
 ## Rules
 The universe of the Game of Life is an infinite or a wrapped two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. Rules for emergence, persistence and death of cells are as follows by default:
