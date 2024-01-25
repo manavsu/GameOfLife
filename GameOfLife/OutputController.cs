@@ -1,5 +1,4 @@
 // Created on 2023-10-14 by Manavjot Singh
-// (c) Amber Kinetics 2023
 
 namespace GameOfLife; 
 
